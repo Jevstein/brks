@@ -1,0 +1,78 @@
+#!/bin/bash
+#
+# Copyright (c) 2018 by yiwenqiang
+# Function: 通过start、stop、restart命令实现服务的启动、停止、重启。若要开机自启动，则将该
+#     脚本拷贝或软链接到/etc/init.d/目录下，执行sudo update-rc.d brks defaults 95（其中数字
+#     95是脚本启动的顺序号，按照需要相应修改）；卸载使用sudo update-rc.d -f brks remove
+#
+
+_SERVER_NAME_=brks
+
+function print(){
+   sysTime=`date '+%Y-%m-%d %T'`
+   echo "[$sysTime] $1"
+}
+
+function printerr(){
+   sysTime=`date '+%Y-%m-%d %T'`
+   echo "[$sysTime][error] $1"
+}
+
+function killprocess(){
+   #$1: server name
+   #note: the name($1) of the process must be unique!
+   
+   NAME=$1
+   PID=$(ps -e | grep -w $NAME | awk '{print $1}') 
+   if [ ! -n "$PID" ]; then
+       printerr "$NAME not run!"
+   else
+       print "kill $NAME $PID"
+       kill -9 $PID
+   fi
+}
+
+function start() {
+    print "$_SERVER_NAME_ start"
+	/bin/$_SERVER_NAME_
+} 
+	
+function stop() {
+    print "$_SERVER_NAME_ stop"
+	killprocess "$_SERVER_NAME_"
+}
+
+function restart() {
+	echo "$_SERVER_NAME_ restart"
+	stop
+	start
+}
+
+function main(){
+	case "$1" in
+		start )
+			echo "************************************"	
+			start
+			echo "************************************"	
+			;;
+		stop )
+			echo "************************************"
+			stop
+			echo "************************************"
+			;;
+	   restart )
+			echo "************************************"
+			restart
+			echo "************************************"	
+			;;
+			* )
+			echo "************************************"
+			echo "usage: /bin/$_SERVER_NAME_ {start|stop|restart}"
+			echo "************************************"
+			;;
+	esac
+}
+
+#note:
+#$1: start, stop, restart
+main $1
