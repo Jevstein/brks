@@ -29,6 +29,7 @@ SET(CMAKE_BUILD_TYPE Debug)
 #################################################################
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR} SOURCE_FILES)
 ADD_EXECUTABLE(brks ${SOURCE_FILES})
+ADD_DEFINITIONS(-DLIBEVENT_VERSION_NUMBER=0x02010800)
 
 
 #for backtrace_symbols
@@ -44,6 +45,7 @@ TARGET_LINK_LIBRARIES(brks pthread)
 TARGET_LINK_LIBRARIES(brks mysqlclient)
 TARGET_LINK_LIBRARIES(brks curl)
 TARGET_LINK_LIBRARIES(brks dl)
+TARGET_LINK_LIBRARIES(brks lua)
 
 TARGET_LINK_LIBRARIES(brks bus)
 TARGET_LINK_LIBRARIES(brks intf)

@@ -1,0 +1,9 @@
+# Ignore everything in this directory
+*.cmake
+*.make
+*.o
+*.a
+*.log
+*.internal
+# Don't ignore directories, so we can recurse into them
+# Except this file
