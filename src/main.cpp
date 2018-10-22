@@ -14,67 +14,129 @@ extern "C"
     #include <lualib.h>
 }
 
-class LuaParser
+
+/************************************************************************/
+/* global value                                                         */
+/************************************************************************/
+//pop interge
+#define POP_VALUE_INT(L, key)\
+({ \
+	int ret = 0; \
+	lua_getglobal(L, key); \
+	if (lua_isnumber(L, -1)) { ret = (int)lua_tointeger(L, -1); lua_pop(L, 1); }\
+	(ret);\
+})
+//pop string
+#define POP_VALUE_STR(L, key)\
+({ \
+	std::string ret = ""; \
+	lua_getglobal(L, key); \
+	if (lua_isstring(L, -1)) { ret = (std::string)lua_tostring(L, -1); lua_pop(L, 1); }\
+	(ret);\
+})
+
+/************************************************************************/
+/* field value                                                          */
+/************************************************************************/
+//pop filed interge
+#define POP_FIELD_INT(L, key)\
+({ \
+	int ret = 0; \
+	lua_getfield(L, -1, key); \
+	if (lua_isnumber(L, -1)) { ret = (int)lua_tointeger(L, -1); lua_pop(L, 1); }\
+	(ret); \
+})
+//pop filed string
+#define POP_FIELD_STR(L, key)\
+({ \
+	std::string ret = ""; \
+	lua_getfield(L, -1, key); \
+	if (lua_isstring(L, -1)) { ret = (std::string)lua_tostring(L, -1); lua_pop(L, 1); }\
+	(ret); \
+})
+
+//数据库配置信息
+struct st_db_conf
 {
-    LuaParser(){}
+	std::string db_ip;
+	unsigned int db_port;
+	std::string db_user;
+	std::string db_pwd;
+	std::string db_name;
+};
+
+class LuaCfg
+{
 public:
-    LuaParser(const char *script){ init(script); }
-    ~LuaParser(){ uninit(); }
+	LuaCfg(){ init(); }
+	~LuaCfg(){ uninit(); }
 
 public:
-    std::string load_string(const char *str)
-    {
-        lua_getglobal(L_, str);
-        if (lua_isstring(L_, -1))
-        {
-            return (std::string)lua_tostring(L_, -1);
-        }
-        return "";
-    }
+	bool load_file(const char *script)
+	{
+		int ret = luaL_dofile(L_, script);
+		if (LUA_OK != ret)
+		{
+			printf("Failed to load file: '%s', ret=%d!\n", script, ret);
+			return false;
+		}
 
-    int load_integer(const char *str)
-    {
-        lua_getglobal(L_, str);
-        if (lua_isnumber(L_, -1))
-        {
-            return (int)lua_tointeger(L_, -1);
-        }
-        return -1;
-    }
+		// -- database
+		lua_getglobal(L_, "db_argv");
+		db_conf_.db_ip = POP_FIELD_STR(L_, "db_ip");
+		db_conf_.db_port = POP_FIELD_INT(L_, "db_port");
+		db_conf_.db_user = POP_FIELD_STR(L_, "db_user");
+		db_conf_.db_pwd = POP_FIELD_STR(L_, "db_pwd");
+		db_conf_.db_name = POP_FIELD_STR(L_, "db_name");
+		printf("db: '%s', %d, '%s', '%s', '%s'\n"
+			, db_conf_.db_ip.c_str(), db_conf_.db_port, db_conf_.db_user.c_str(), db_conf_.db_pwd.c_str(), db_conf_.db_name.c_str());
+		lua_pop(L_, 1);
+
+		// -- server
+		srv_port_ = POP_VALUE_INT(L_, "srv_port");
+		//srv_port_ = POP_VALUE_(L_, int, "srv_port", 0);
+		printf("server port: %d\n", srv_port_);
+
+		return true;
+	}
 
 protected:
-    bool init(const char *script)
-    {
-        L_ = luaL_newstate();
-        if (NULL == L_)
-        {
-            std::cout << "Failed to create Lua State!" << std::endl;
-            return false;
-        }
+	bool init()
+	{
+		L_ = luaL_newstate();
+		if (NULL == L_)
+		{
+			std::cout << "Failed to create Lua State!" << std::endl;
+			return false;
+		}
 
-        luaL_openlibs(L_);
+		luaL_openlibs(L_);
 
-        int ret = luaL_dofile(L_, script);
-        if (ret != 0)
-        {
-            std::cout << "Failed to load file: '" << script << "'!" << std::endl;
-            return false;
-        }
+		return true;
+	}
 
-        return true;
-    }
+	void uninit()
+	{
+		lua_close(L_);
+	}
 
-    void uninit()
-    {
-        lua_close(L_);
-    }
+public:
+	st_db_conf db_conf_;
+	unsigned int srv_port_;
 
 private:
-    lua_State *L_;
+	lua_State *L_;
 };
 
 int main(int argc, char** argv)
 {
+	LuaCfg cfg;
+	if (!cfg.load_file("../conf/conf.lua"))
+	{
+		printf("failed to load config.\n");
+		return -1;
+	}
+
     if (argc != 2)
     {
         printf("please input brks <log file config>!\n");
@@ -88,27 +150,15 @@ int main(int argc, char** argv)
     }
     else
     {
-        printf("init log module success!");
+        printf("init log module success!\n");
     }
-
-    LuaParser parser("./scripts/cfg.lua");
-    // -- db
-    std::string db_ip = parser.load_string("db_ip");
-    int db_port = parser.load_integer("db_port");
-    std::string  db_user = parser.load_string("db_user");
-    std::string db_pwd = parser.load_string("db_pwd");
-    std::string db_name = parser.load_string("db_name");
-    // printf("db: '%s', %d, '%s', '%s', '%s' \n", db_ip.c_str(), db_port, db_user.c_str(), db_pwd.c_str(), db_name.c_str());
-    // -- network
-    int net_port = parser.load_integer("net_port");
-    // printf("network: %d\n", net_port);
 
     std::shared_ptr<DispatchMsgService> dms(new DispatchMsgService);
     dms->open();
     
     std::shared_ptr<MysqlConnection> mysqlconn(new MysqlConnection);
     // mysqlconn->Init("127.0.0.1", 3306, "root", "123456", "dongnaobike");
-    mysqlconn->Init(db_ip.c_str(), db_port, db_user.c_str(), db_pwd.c_str(), db_name.c_str());
+    mysqlconn->Init(cfg.db_conf_.db_ip.c_str(), cfg.db_conf_.db_port, cfg.db_conf_.db_user.c_str(), cfg.db_conf_.db_pwd.c_str(), cfg.db_conf_.db_name.c_str());
     
     BusinessProcessor processor(dms, mysqlconn);
     processor.init();
@@ -117,7 +167,7 @@ int main(int argc, char** argv)
     
     Interface intf(fun);
     // intf.start(9090);
-    intf.start(net_port);
+    intf.start(cfg.srv_port_);
 
     LOG_INFO("brks start successful!");
 
