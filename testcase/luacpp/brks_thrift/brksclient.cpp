@@ -19,6 +19,7 @@ extern "C"
 #include <thrift/transport/TSocket.h>
 #include <thrift/transport/TBufferTransports.h>
 #include <thrift/protocol/TBinaryProtocol.h>
+#include <thrift/protocol/TCompactProtocol.h>
 #include <boost/shared_ptr.hpp>
 using namespace std;
 
@@ -47,8 +48,8 @@ class BRKSClient
 public:
 	BRKSClient(const char* host, int port)
 		: socket_(new TSocket(host, port))
-		, transport_(new TBufferedTransport(socket_))
-		, protocol_(new TBinaryProtocol(transport_))
+		, transport_(new TFramedTransport(socket_))//TBufferedTransport
+		, protocol_(new TCompactProtocol(transport_))//TBinaryProtocol
 		, service_(protocol_){}
 	~BRKSClient(){}
 
@@ -139,7 +140,6 @@ int brk_get_mobile_code(lua_State* L)
 	else
 		printf("error: failed to get service!\n");
 
-	BRKSManager::instance()->serve()->brk_get_mobile_code(rst, mobile);
 	lua_pushnumber(L, rst.resultCode);
 	lua_pushstring(L, rst.resultMsg.c_str());
 	lua_pushstring(L, rst.data.c_str());
