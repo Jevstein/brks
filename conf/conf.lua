@@ -7,7 +7,7 @@ db_argv = {
     db_name="dongnaobike"
 }
 
-svr_port  = 9090
+srv_port  = 9090
 
 -- 以下是配置检查
 -- print("检查配置:")
@@ -56,7 +56,8 @@ function checkpro(argv, sport)
     end
 
 	-- 2.检查服务器配置
-    if type(sport) ~= "number" or sport > 65535 or sport < 0 then
+    -- if type(sport) ~= "number" or sport > 65535 or sport < 0 then
+    if type(sport) ~= "number" or sport < 0 then
         print("服务器端口不合法");
         return nil
     else
@@ -70,5 +71,5 @@ function checkpro(argv, sport)
     --return argv
 end
 
-return checkpro(db_argv, svr_port)
+return checkpro(db_argv, srv_port)
 

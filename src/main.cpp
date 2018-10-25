@@ -94,7 +94,6 @@ public:
 
 		// -- server
 		srv_port_ = POP_VALUE_INT(L_, "srv_port");
-		//srv_port_ = POP_VALUE_(L_, int, "srv_port", 0);
 		printf("server port: %d\n", srv_port_);
 
 		return true;
@@ -131,7 +130,7 @@ private:
 int main(int argc, char** argv)
 {
 	LuaCfg cfg;
-	if (!cfg.load_file("../conf/conf.lua"))
+	if (!cfg.load_file("conf/conf.lua"))
 	{
 		printf("failed to load config.\n");
 		return -1;

@@ -34,7 +34,7 @@ function killprocess(){
 
 function start() {
     print "$_SERVER_NAME_ start"
-	/bin/$_SERVER_NAME_
+	src/$_SERVER_NAME_ conf/log.conf
 } 
 	
 function stop() {
