@@ -1,4 +1,3 @@
-
 package.cpath = package.cpath .. ";/usr/local/lib/?.so"
 
 require('interface_BRKService')
@@ -14,8 +13,7 @@ require('liblualongnumber')
 local client
 
 local opt = {
-    -- host      = '47.106.79.26',
-    host      = '127.0.0.1',
+    host      = '47.106.79.26',
     port      = '9090',
     protocol  = TCompactProtocol,
     transport = TFramedTransport
@@ -59,7 +57,7 @@ function testBasicClient()
     local status, _ = pcall(transport.open, transport)
     assert(status, 'Failed to connect to serverle_code')
 
-    local r = client:brk_get_mobile_code('15821725973')
+    local r = client:brk_get_mobile_code('15200599665')
     print(r.resultCode)
     print(r.resultMsg)
     assertEqual(r.resultCode, 200, 'Failed call brk_get_mobile_code')
