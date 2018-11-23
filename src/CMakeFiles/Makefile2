@@ -84,7 +84,7 @@ all: CMakeFiles/brks.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/brks.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 29
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/brks.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 0
 .PHONY : CMakeFiles/brks.dir/rule
@@ -139,7 +139,7 @@ all: bus/CMakeFiles/bus.dir/all
 
 # Build rule for subdir invocation for target.
 bus/CMakeFiles/bus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 9
 	$(MAKE) -f CMakeFiles/Makefile2 bus/CMakeFiles/bus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 0
 .PHONY : bus/CMakeFiles/bus.dir/rule
@@ -184,7 +184,7 @@ common/preinstall:
 common/CMakeFiles/common.dir/all:
 	$(MAKE) -f common/CMakeFiles/common.dir/build.make common/CMakeFiles/common.dir/depend
 	$(MAKE) -f common/CMakeFiles/common.dir/build.make common/CMakeFiles/common.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles --progress-num=7,8,9,10 "Built target common"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles --progress-num=7,8,9,10,11 "Built target common"
 .PHONY : common/CMakeFiles/common.dir/all
 
 # Include target in all.
@@ -194,7 +194,7 @@ all: common/CMakeFiles/common.dir/all
 
 # Build rule for subdir invocation for target.
 common/CMakeFiles/common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 common/CMakeFiles/common.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 0
 .PHONY : common/CMakeFiles/common.dir/rule
@@ -239,7 +239,7 @@ intf/preinstall:
 intf/CMakeFiles/intf.dir/all:
 	$(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/depend
 	$(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles --progress-num=11,12,13,14,15,16,17 "Built target intf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles --progress-num=12,13,14,15,16,17,18,19,20,21,22,23 "Built target intf"
 .PHONY : intf/CMakeFiles/intf.dir/all
 
 # Include target in all.
@@ -249,7 +249,7 @@ all: intf/CMakeFiles/intf.dir/all
 
 # Build rule for subdir invocation for target.
 intf/CMakeFiles/intf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 12
 	$(MAKE) -f CMakeFiles/Makefile2 intf/CMakeFiles/intf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles 0
 .PHONY : intf/CMakeFiles/intf.dir/rule
@@ -294,7 +294,7 @@ service/preinstall:
 service/CMakeFiles/service.dir/all:
 	$(MAKE) -f service/CMakeFiles/service.dir/build.make service/CMakeFiles/service.dir/depend
 	$(MAKE) -f service/CMakeFiles/service.dir/build.make service/CMakeFiles/service.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles --progress-num=18,19,20,21,22,23 "Built target service"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jevstein/workspace/Dongnao/src/brks/src/CMakeFiles --progress-num=24,25,26,27,28,29 "Built target service"
 .PHONY : service/CMakeFiles/service.dir/all
 
 # Include target in all.

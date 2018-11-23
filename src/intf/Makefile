@@ -279,6 +279,141 @@ interface_types.cpp.s:
 	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/interface_types.cpp.s
 .PHONY : interface_types.cpp.s
 
+json_protocol_codec.o: json_protocol_codec.cpp.o
+
+.PHONY : json_protocol_codec.o
+
+# target to build an object file
+json_protocol_codec.cpp.o:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/json_protocol_codec.cpp.o
+.PHONY : json_protocol_codec.cpp.o
+
+json_protocol_codec.i: json_protocol_codec.cpp.i
+
+.PHONY : json_protocol_codec.i
+
+# target to preprocess a source file
+json_protocol_codec.cpp.i:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/json_protocol_codec.cpp.i
+.PHONY : json_protocol_codec.cpp.i
+
+json_protocol_codec.s: json_protocol_codec.cpp.s
+
+.PHONY : json_protocol_codec.s
+
+# target to generate assembly for a file
+json_protocol_codec.cpp.s:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/json_protocol_codec.cpp.s
+.PHONY : json_protocol_codec.cpp.s
+
+local_socket.o: local_socket.cpp.o
+
+.PHONY : local_socket.o
+
+# target to build an object file
+local_socket.cpp.o:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/local_socket.cpp.o
+.PHONY : local_socket.cpp.o
+
+local_socket.i: local_socket.cpp.i
+
+.PHONY : local_socket.i
+
+# target to preprocess a source file
+local_socket.cpp.i:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/local_socket.cpp.i
+.PHONY : local_socket.cpp.i
+
+local_socket.s: local_socket.cpp.s
+
+.PHONY : local_socket.s
+
+# target to generate assembly for a file
+local_socket.cpp.s:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/local_socket.cpp.s
+.PHONY : local_socket.cpp.s
+
+protobuf_codec.o: protobuf_codec.cpp.o
+
+.PHONY : protobuf_codec.o
+
+# target to build an object file
+protobuf_codec.cpp.o:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/protobuf_codec.cpp.o
+.PHONY : protobuf_codec.cpp.o
+
+protobuf_codec.i: protobuf_codec.cpp.i
+
+.PHONY : protobuf_codec.i
+
+# target to preprocess a source file
+protobuf_codec.cpp.i:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/protobuf_codec.cpp.i
+.PHONY : protobuf_codec.cpp.i
+
+protobuf_codec.s: protobuf_codec.cpp.s
+
+.PHONY : protobuf_codec.s
+
+# target to generate assembly for a file
+protobuf_codec.cpp.s:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/protobuf_codec.cpp.s
+.PHONY : protobuf_codec.cpp.s
+
+protocol.pb.o: protocol.pb.cc.o
+
+.PHONY : protocol.pb.o
+
+# target to build an object file
+protocol.pb.cc.o:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/protocol.pb.cc.o
+.PHONY : protocol.pb.cc.o
+
+protocol.pb.i: protocol.pb.cc.i
+
+.PHONY : protocol.pb.i
+
+# target to preprocess a source file
+protocol.pb.cc.i:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/protocol.pb.cc.i
+.PHONY : protocol.pb.cc.i
+
+protocol.pb.s: protocol.pb.cc.s
+
+.PHONY : protocol.pb.s
+
+# target to generate assembly for a file
+protocol.pb.cc.s:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/protocol.pb.cc.s
+.PHONY : protocol.pb.cc.s
+
+protocol_head.o: protocol_head.cpp.o
+
+.PHONY : protocol_head.o
+
+# target to build an object file
+protocol_head.cpp.o:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/protocol_head.cpp.o
+.PHONY : protocol_head.cpp.o
+
+protocol_head.i: protocol_head.cpp.i
+
+.PHONY : protocol_head.i
+
+# target to preprocess a source file
+protocol_head.cpp.i:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/protocol_head.cpp.i
+.PHONY : protocol_head.cpp.i
+
+protocol_head.s: protocol_head.cpp.s
+
+.PHONY : protocol_head.s
+
+# target to generate assembly for a file
+protocol_head.cpp.s:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f intf/CMakeFiles/intf.dir/build.make intf/CMakeFiles/intf.dir/protocol_head.cpp.s
+.PHONY : protocol_head.cpp.s
+
 struct_constants.o: struct_constants.cpp.o
 
 .PHONY : struct_constants.o
@@ -358,6 +493,21 @@ help:
 	@echo "... interface_types.o"
 	@echo "... interface_types.i"
 	@echo "... interface_types.s"
+	@echo "... json_protocol_codec.o"
+	@echo "... json_protocol_codec.i"
+	@echo "... json_protocol_codec.s"
+	@echo "... local_socket.o"
+	@echo "... local_socket.i"
+	@echo "... local_socket.s"
+	@echo "... protobuf_codec.o"
+	@echo "... protobuf_codec.i"
+	@echo "... protobuf_codec.s"
+	@echo "... protocol.pb.o"
+	@echo "... protocol.pb.i"
+	@echo "... protocol.pb.s"
+	@echo "... protocol_head.o"
+	@echo "... protocol_head.i"
+	@echo "... protocol_head.s"
 	@echo "... struct_constants.o"
 	@echo "... struct_constants.i"
 	@echo "... struct_constants.s"

@@ -252,6 +252,33 @@ events_def.cpp.s:
 	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f common/CMakeFiles/common.dir/build.make common/CMakeFiles/common.dir/events_def.cpp.s
 .PHONY : events_def.cpp.s
 
+iniconfig.o: iniconfig.cpp.o
+
+.PHONY : iniconfig.o
+
+# target to build an object file
+iniconfig.cpp.o:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f common/CMakeFiles/common.dir/build.make common/CMakeFiles/common.dir/iniconfig.cpp.o
+.PHONY : iniconfig.cpp.o
+
+iniconfig.i: iniconfig.cpp.i
+
+.PHONY : iniconfig.i
+
+# target to preprocess a source file
+iniconfig.cpp.i:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f common/CMakeFiles/common.dir/build.make common/CMakeFiles/common.dir/iniconfig.cpp.i
+.PHONY : iniconfig.cpp.i
+
+iniconfig.s: iniconfig.cpp.s
+
+.PHONY : iniconfig.s
+
+# target to generate assembly for a file
+iniconfig.cpp.s:
+	cd /home/jevstein/workspace/Dongnao/src/brks/src && $(MAKE) -f common/CMakeFiles/common.dir/build.make common/CMakeFiles/common.dir/iniconfig.cpp.s
+.PHONY : iniconfig.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -274,6 +301,9 @@ help:
 	@echo "... events_def.o"
 	@echo "... events_def.i"
 	@echo "... events_def.s"
+	@echo "... iniconfig.o"
+	@echo "... iniconfig.i"
+	@echo "... iniconfig.s"
 .PHONY : help
 
 

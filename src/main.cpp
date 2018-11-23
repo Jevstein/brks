@@ -4,6 +4,8 @@
 #include "Logger.h"
 #include "sqlconnection.h"
 #include "BusProcessor.h"
+#include "iniconfig.h"
+#include "configdef.h"
 
 #include <functional>
 #include <sys/types.h>
@@ -14,7 +16,6 @@
 
 #include <sys/types.h>
 #include <sys/wait.h>
->>>>>>> 86329cdfc0b5a74ed685a5b2983c835588a6e8c6
 
 #define OPTERRCOLON (1)
 #define OPTERRNF (2)
@@ -228,6 +229,7 @@ int main(int argc, char** argv)
         LOG_ERROR("load %s failed.", config_file_path.c_str());
         return -3;
     }
+    st_env_config conf_args = config.getconfig();
 
     if (!run_in_foreground)
     {
@@ -240,15 +242,17 @@ int main(int argc, char** argv)
 
     std::shared_ptr<DispatchMsgService> dms(new DispatchMsgService);
     dms->open();
-    
+
     std::shared_ptr<MysqlConnection> mysqlconn(new MysqlConnection);
-    // mysqlconn->Init("127.0.0.1", 3306, "root", "123456", "dongnaobike");
-    mysqlconn->Init(cfg.db_conf_.db_ip.c_str(), cfg.db_conf_.db_port, cfg.db_conf_.db_user.c_str(), cfg.db_conf_.db_pwd.c_str(), cfg.db_conf_.db_name.c_str());
-    
+    //mysqlconn->Init("127.0.0.1", 3306, "root", "123456", "dongnaobike");
+    mysqlconn->Init(conf_args.db_ip.c_str(), conf_args.db_port, \
+        conf_args.db_user.c_str(), conf_args.db_pwd.c_str(), conf_args.db_name.c_str());
+
     BusinessProcessor processor(dms, mysqlconn);
     processor.init();
 
     std::function< iEvent* (const iEvent*)> fun = std::bind(&DispatchMsgService::process, dms.get(), std::placeholders::_1);
+
     // create server socket and set to non block
     Interface intf(fun);
     int server_socket = intf.create_and_bind_socket(conf_args.svr_port);
@@ -320,7 +324,7 @@ int main(int argc, char** argv)
     }
 
     for(;;);
-    
+
     return 0;
 }
 
